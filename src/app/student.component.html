@@ -1,0 +1,58 @@
+<!-- <h1 class="display">Student Registration</h1>
+<form #studentform="ngForm" autocomplete="off" (submit)="onSubmit(studentform)">
+    <input placeholder="Full Name" name="id" #fullName="ngModel" [(ngModel)]="studentservice.formData.id" type="hidden" class="form-control" >
+
+  <div class="form-group">
+    <input placeholder="Full Name" name="fullName" #fullName="ngModel" [(ngModel)]="studentservice.formData.fullName" type="text" class="form-control" required>
+    <div  *ngIf="fullName.invalid && fullName.touched" class="validation-error">This field is required</div>
+  </div>
+  <div class="form-group">
+    <input placeholder="Roll No" name="RollNo" #RollNo="ngModel" [(ngModel)]="studentservice.formData.RollNo" type="text" class="form-control" required>
+    <div  *ngIf="RollNo.invalid && RollNo.touched" class="validation-error">This field is required</div>
+
+  </div>
+  <div class="form-group">
+    <input placeholder="mobile" name="mobile" #mobile="ngModel" [(ngModel)]="studentservice.formData.mobile" type="text" class="form-control" required>
+    <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div>
+
+  </div>
+  <div class="form-group">
+    <input placeholder="Course" name="Course" #Course="ngModel" [(ngModel)]="studentservice.formData.Course" type="text" class="form-control" required>
+    <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div>
+
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="studentform.invalid" class="btn btn-lg btn-block btn-info">Submit</button>
+  </div>
+</form> -->
+
+<h1 class="display">Student Registration</h1>
+<form  [formGroup]="studentform" autocomplete="off" (submit)="onSubmit(studentform)">
+    <input placeholder="Full Name" formControlName="id" [(ngModel)]="studentservice.formData.id" type="hidden" class="form-control" >
+
+  <div class="form-group">
+    <input placeholder="Full Name" formControlName="fullName"  [(ngModel)]="studentservice.formData.fullName" type="text" class="form-control" required>
+    <!-- <div  *ngIf="fullName.invalid && fullName.touched" class="validation-error">This field is required</div> -->
+  </div>
+  <div class="form-group">
+    <input placeholder="Roll No" formControlName="RollNo"  [(ngModel)]="studentservice.formData.RollNo" type="text" class="form-control" required>
+    <!-- <div  *ngIf="RollNo.invalid && RollNo.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <input placeholder="mobile" formControlName="mobile"  [(ngModel)]="studentservice.formData.mobile" type="text" class="form-control" required>
+    <!-- <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <input placeholder="Course" formControlName="Course"  [(ngModel)]="studentservice.formData.Course" type="text" class="form-control" required>
+    <!-- <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="studentform.invalid" class="btn btn-lg btn-block btn-info">Submit</button>
+  </div>
+  <div class="form-group">
+    <button type="button" (click)="try(studentform.value)" class="btn btn-lg btn-block btn-info">check</button>
+  </div>
+</form>
