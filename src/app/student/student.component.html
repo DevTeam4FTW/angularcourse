@@ -1,0 +1,51 @@
+<div class="col-md-5">
+<h1 class="display">Student Registration</h1>
+<form  [formGroup]="studentform"  >
+    <input  formControlName="id"  type="hidden" class="form-control" >
+
+  <div class="form-group" >
+    <input id="fullName" placeholder="Full Name" pattern="[A-Z][a-z]*"  formControlName="fullName"  type="text" class="form-control">
+        <div  class="validation-error"></div>
+
+  </div>
+  <div class="form-group">
+    <input placeholder="Roll No" pattern="[S,C,A][1-9]{2}[-][1-9]{4}" formControlName="RollNo"  type="text" class="form-control" required>
+    <!-- <div  *ngIf="RollNo.invalid && RollNo.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <input placeholder="mobile" pattern="[1-9]{10}" formControlName="mobile" type="text" class="form-control" required>
+    <!-- <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <input placeholder="Course" formControlName="Course" type="text" class="form-control" required>
+    <!-- <div  *ngIf="mobile.invalid && mobile.touched" class="validation-error">This field is required</div> -->
+
+  </div>
+  <div class="form-group">
+    <button type="button" (click)="try(studentform.value)" [disabled]="studentform.invalid" class="btn btn-lg btn-block btn-info">Submit</button>
+  </div>
+</form>
+</div>
+
+<div class="col-md-7">
+  <table class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>RollNo</th>
+      <th>Course</th>
+      <th>Mobile</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let std of students">
+        <td (click)="onEdit(std)">{{std.fullName | uppercase}}</td>
+        <td (click)="onEdit(std)">{{std.RollNo}}</td>
+        <td (click)="onEdit(std)">{{std.mobile}}</td>
+        <td (click)="onEdit(std)">{{std.Course}}</td>
+        <td><a class="btn text-danger" (click)="onDelete(std.id)"><i class="fa fa-trash"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
